@@ -154,6 +154,5 @@ def calculate_slabs(units, slab_rates, billing_type):
             slab1 = units * slab_rates[0]
         return([round(slab1, 2), round(slab2, 2), 0, 0, 0, 0])
 
-
 if __name__ == '__main__':
     app.run(debug=True)
