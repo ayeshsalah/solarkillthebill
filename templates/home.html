@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ZEST Kill the Bill Estimate</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <img class="d-block mx-auto mb-4" src={{url_for('static', filename='zest-logo.jpeg')}} height='80' width="120" align="right">
+    <div class="py-5 text-center">
+      <h2>ZEST Kill the Bill Estimate</h2>
+      <!-- <p class="lead">Use this form to calculate benefits of a Solar Rooftop.</p> -->
+    </div>
+    <form action="" method="post">
+      <!-- EMAIL SUBMISSION -->
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3 mb-2">
+            <b>
+              <label for="areaInput">Available Rooftop Area</label>
+            </b>
+            <input type="text" name="areaInput" class="form-control" id="areaInput" aria-describedby="areaHelp" placeholder="Enter area"
+              required>
+            <small id="areaHelp" class="form-text text-muted"> in sq. ft.</small>
+          </div>
+
+          <div class="col-md-3 mb-2">
+            <b>
+              <label for="unitsInput">Typical Units Consumption</label>
+            </b>
+            <input type="text" name="unitsInput" class="form-control" id="unitsInput" placeholder="Enter Units Consumed" required>
+            <small id="unitsInput" class="form-text text-muted">in units</small>
+          </div>
+
+
+          <div class="col-md-4 mb-2">
+
+            <b>
+              <label for="outputPerDay">Expected PV output per kW per day</label>
+            </b>
+            <input type="text" name="outputPerDay" class="form-control" id="outputPerDay" aria-describedby="panelOutputHelp" placeholder="Enter Daily Expected PV Output per KiloWatt"
+              required>
+            <small id="panelOutputHelp" class="form-text text-muted">in kWh</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <b>
+                <label for="contractedLoadInput">Contracted Load</label>
+              </b>
+              <!-- <input type="text" name="contractedLoadInput" class="form-control" id="contractedLoadInput" aria-describedby="contractedLoadHelp" placeholder="Enter Contracted Load"> -->
+              <!-- <small id="contractedLoadHelp" class="form-text text-muted">In kW</small> -->
+              <div class="row">
+                <div class="col-md-6 ">
+                  <label for="loadKW">kW</label>
+                  <input type="text" name="loadKW" class="form-control" id="loadKW" placeholder="Contracted Load" value="" aria-describedby="kWHelp"
+                    required>
+                  <small id="kWHelp" class="form-text text-muted">in kW</small>
+
+                  <!-- <div class="invalid-feedback">
+            Valid first name is required.
+          </div> -->
+                </div>
+                <div class="col-md-6 ">
+                  <label for="loadHP">HP</label>
+                  <input type="text" name="loadHP" class="form-control" id="loadHP" placeholder="Contracted Load" value="" aria-describedby="hPHelp"
+                    required>
+                  <small id="hPHelp" class="form-text text-muted">in HP</small>
+                  <!-- <div class="invalid-feedback">
+            Valid last name is required.
+          </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <b>
+                <label for="coordinatesInput">Location Co-ordinates</label>
+              </b>
+              <!-- <input type="text" name="coordinatesInput" class="form-control" id="coordinatesInput" aria-describedby="coordinatesHelp" placeholder="Enter Location Co-ordinates">
+      <small id="coordinatesHelp" class="form-text text-muted">in degress</small> -->
+              <div class="row">
+                <div class="col-md-4 ">
+                  <label for="northCoordinate">North</label>
+                  <input type="text" name="northCoordinate" class="form-control" id="northCoordinate" placeholder="North Co-ordinate" value=""
+                    aria-describedby="northCoordinateHelp">
+                  <small id="northCoordinateHelp" class="form-text text-muted">in degress</small>
+
+                  <!-- <div class="invalid-feedback">
+            Valid first name is required.
+          </div> -->
+                </div>
+                <div class="col-md-4 ">
+                  <label for="eastCoordinates">East</label>
+                  <input type="text" name="eastCoordinates" class="form-control" id="eastCoordinates" placeholder="East Co-ordinate" value=""
+                    aria-describedby="eastCoordinateHelp">
+                  <small id="eastCoordinateHelp" class="form-text text-muted">in degress</small>
+                  <!-- <div class="invalid-feedback">
+            Valid last name is required.
+          </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <b>
+                <label for="heightInput">Height of the building</label>
+              </b>
+              <input type="text" name="heightInput" class="form-control" id="heightInput" aria-describedby="heightHelp" placeholder="Enter height of the building">
+              <small id="heightHelp" class="form-text text-muted">in feet</small>
+            </div>
+            <div class="col-md-3 mb-3">
+              <b>
+                <label for="floorInput">Number of floors</label>
+              </b>
+              <input type="text" name="floorsInput" class="form-control" id="floorsInput" aria-describedby="floorsHelp" placeholder="Enter number of floors">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- DROPDOWN SELECT -->
+
+
+        <!-- <div class="form-group">
+      <label for="exampleSelect1">Example select</label>
+      <select class="form-control" id="exampleSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div> -->
+
+
+        <!-- MULTIPLE SELECT OPTIONS -->
+
+        <!-- <div class="form-group">
+      <label for="exampleSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div> -->
+
+
+        <!-- TEXT AREA -->
+        <!--
+    <div class="form-group">
+      <label for="exampleTextarea">Example textarea</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div> -->
+
+
+        <!-- FILE UPLOAD INPUT -->
+
+        <!-- <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div> -->
+
+        <!-- RADIO BUTTONS -->
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6 ">
+              <fieldset class="form-group ">
+                <b>
+                  <label for="form-check-label">Billing Type</label>
+                </b>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="billingOptionsRadios" id="billingOptionsRadios1" value="Rural"> Rural
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="billingOptionsRadios" id="billingOptionsRadios2" value="Urban" checked> Urban
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="billingOptionsRadios" id="billingOptionsRadios3" value="Commercial"> Commercial
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-6 ">
+              <fieldset class="form-group ">
+                <b>
+                  <label for="form-check-label">Construction Type</label>
+                </b>
+                <!-- <legend>Radio buttons</legend> -->
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="existing"> Existing Building
+                  </label>
+                </div>
+
+
+                <div class="form-check ">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="new construction"> New Construction
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHECK BUTTON -->
+
+        <!-- <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Check me out
+      </label>
+    </div> -->
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+    </div>
+
+  </div>
+</body>
+
+</html>
