@@ -15,7 +15,10 @@ def main():
         load_kw = float(request.form.get('loadKW'))
         load_hp = float(request.form.get('loadHP'))
         units = float(request.form.get('unitsInput'))
-        output_per_day = float(request.form.get('outputPerDay'))
+        if request.form.get('outputPerDay'):
+            output_per_day = float(request.form.get('outputPerDay'))
+        else:
+            output_per_day = 4
         billing_type = request.form.get('billingOptionsRadios')
         north_coordinates = request.form.get('northCoordinate')
         east_coordinates = request.form.get('eastCoordinates')
@@ -47,9 +50,9 @@ def main():
         slab_rates = set_slab_rates(billing_type)
         slabs = calculate_slabs(units, slab_rates, billing_type)
         tax = round(((slabs[0] + slabs[1] + slabs[2] + slabs[3] + slabs[4] + slabs[5]) * 6)/100, 2)
-        recommended_value1 = round((units - 100)/120, 2)
+        recommended_value1 = round((units - 100)/120, 1)
         # recommended_value2 = round(contracted_load * 0.75, 2)
-        recommended_value2 = round(area/70, 2)
+        recommended_value2 = round(area/70, 1)
         # print(recommended_value1, recommended_value2, recommended_value3)
         recommended_value = min([recommended_value1, recommended_value2, contracted_load]) 
         net_bill = round(cca+ccb+slabs[0] + slabs[1] + slabs[2] + slabs[3] + slabs[4] + slabs[5]+fuel_cess+tax, 2)
@@ -78,7 +81,7 @@ def main():
                                output=output_per_day, billing_type=billing_type, north=north_coordinates,
                                east=east_coordinates, height=building_height, floors=floors, existing=existing,
                                newconstruction=new_construction, cca=cca, ccb=ccb, slab1=slabs[0], slab2=slabs[1], slab3=slabs[2], slab4=slabs[3], slab5=slabs[4], slab6=slabs[5],
-                               fuelcess=fuel_cess, tax=tax, netbill=net_bill, contracted_load=contracted_load, killthebill = recommended_value, 
+                               fuelcess=fuel_cess, tax=tax, netbill=net_bill, contracted_load=round(contracted_load,1), killthebill = recommended_value, 
                                slab1after=slabs_after[0], slab2after=slabs_after[1], slab3after=slabs_after[2], slab4after=slabs_after[3], slab5after=slabs_after[4], 
                                slab6after=slabs_after[5], fuelcessafter=fuel_cess_after, taxafter=tax_after, netbillafter=net_bill_after, savings = round(net_bill-net_bill_after, 2),
                                slab1rate=slab_rates[0], slab2rate=slab_rates[1], slab3rate=slab_rates[2], slab4rate=slab_rates[3], slab5rate=slab_rates[4], slab6rate=slab_rates[5],
