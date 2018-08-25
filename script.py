@@ -54,8 +54,13 @@ def main():
         recommended_value = min([recommended_value1, recommended_value2, contracted_load]) 
         net_bill = round(cca+ccb+slabs[0] + slabs[1] + slabs[2] + slabs[3] + slabs[4] + slabs[5]+fuel_cess+tax, 2)
 
-        expected_units = output_per_day * recommended_value * 30
-        units_after = units - expected_units 
+        expected_units_montly = output_per_day * recommended_value * 30
+        expected_units_yearly = round(output_per_day * recommended_value * 365, 2)
+        expected_units_quater_century = round(expected_units_yearly * 25, 2)
+        units_after = units - expected_units_montly 
+
+        carbon_dioxide_mitigated = int((expected_units_quater_century/1000) * 0.82)
+        teak_trees = int(expected_units_quater_century/762)
  
         slabs_after = calculate_slabs(units_after, slab_rates, billing_type)
         fuel_cess_after = round(units_after * 0.15, 2)
@@ -69,7 +74,6 @@ def main():
         # print(area, load_kw, load_hp, units, billing_type, output_per_day,
         # north_coordinates, east_coordinates, building_height, floors, construction_type)
 
-        # flash('Login requested for user {}, remember_me={}'.format(form.username.data, form.remember_me.data))
         return render_template('submitted.html', area=area, load_kw=load_kw, load_hp=load_hp, units=units,
                                output=output_per_day, billing_type=billing_type, north=north_coordinates,
                                east=east_coordinates, height=building_height, floors=floors, existing=existing,
@@ -78,7 +82,8 @@ def main():
                                slab1after=slabs_after[0], slab2after=slabs_after[1], slab3after=slabs_after[2], slab4after=slabs_after[3], slab5after=slabs_after[4], 
                                slab6after=slabs_after[5], fuelcessafter=fuel_cess_after, taxafter=tax_after, netbillafter=net_bill_after, savings = round(net_bill-net_bill_after, 2),
                                slab1rate=slab_rates[0], slab2rate=slab_rates[1], slab3rate=slab_rates[2], slab4rate=slab_rates[3], slab5rate=slab_rates[4], slab6rate=slab_rates[5],
-                               rv1=recommended_value1, rv2=recommended_value2)
+                               rv1=recommended_value1, rv2=recommended_value2, expected_units_yearly=expected_units_yearly, expected_units_quater_century=expected_units_quater_century,
+                               carbon_dioxide_mitigated=carbon_dioxide_mitigated, teak_trees=teak_trees)
     else:
         return render_template('home.html')
 
