@@ -38,13 +38,13 @@ def main():
         ccb = 0
         if billing_type == "Commercial":
             if 0 < contracted_load > 1:
-                cca = contracted_load * 70
+                cca = contracted_load * 80
         else:
             if 0 < contracted_load > 1:
-                cca = 1 * 50
-                ccb = (contracted_load - 1) * 60
+                cca = 1 * 60
+                ccb = (contracted_load - 1) * 70
             else:
-                cca = contracted_load * 50
+                cca = contracted_load * 60
 
         fuel_cess = round(units * 0.29, 2)
         slab_rates = set_slab_rates(billing_type)
