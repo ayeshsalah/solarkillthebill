@@ -99,15 +99,15 @@ def set_slab_rates(billing_type):
         slab5_rate = 7.80
         slab6_rate = 7.80
     elif billing_type == "Rural":
-        slab1_rate = 2.00
-        slab2_rate = 3.00
-        slab3_rate = 4.00
-        slab4_rate = 5.00
-        slab5_rate = 5.00
-        slab6_rate = 5.00
+        slab1_rate = 3.65
+        slab2_rate = 4.90
+        slab3_rate = 6.45
+        slab4_rate = 7.30
+        slab5_rate = 7.30
+        slab6_rate = 7.30
     elif billing_type=="Commercial":
-        slab1_rate = 7.75
-        slab2_rate = 8.75
+        slab1_rate = 8.00
+        slab2_rate = 9.00
         slab3_rate = 0
         slab4_rate = 0
         slab5_rate = 0
