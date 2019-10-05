@@ -46,10 +46,10 @@ def main():
             else:
                 cca = contracted_load * 50
 
-        fuel_cess = round(units * 0.15, 2)
+        fuel_cess = round(units * 0.29, 2)
         slab_rates = set_slab_rates(billing_type)
         slabs = calculate_slabs(units, slab_rates, billing_type)
-        tax = round(((slabs[0] + slabs[1] + slabs[2] + slabs[3] + slabs[4] + slabs[5]) * 6)/100, 2)
+        tax = round(((slabs[0] + slabs[1] + slabs[2] + slabs[3] + slabs[4] + slabs[5]) * 9)/100, 2)
         recommended_value1 = round((units - 100)/120, 1)
         # recommended_value2 = round(contracted_load * 0.75, 2)
         recommended_value2 = round(area/70, 1)
@@ -92,19 +92,19 @@ def main():
 
 def set_slab_rates(billing_type):
     if billing_type=="Urban":
-        slab1_rate = 3.5
-        slab2_rate = 4.95
-        slab3_rate = 6.90
-        slab4_rate = 7.55
-        slab5_rate = 7.6
-        slab6_rate = 7.65
+        slab1_rate = 3.75
+        slab2_rate = 5.20
+        slab3_rate = 6.75
+        slab4_rate = 7.80
+        slab5_rate = 7.80
+        slab6_rate = 7.80
     elif billing_type == "Rural":
-        slab1_rate = 3.15
-        slab2_rate = 4.40
-        slab3_rate = 5.95
-        slab4_rate = 5.95
-        slab5_rate = 5.95
-        slab6_rate = 5.95
+        slab1_rate = 2.00
+        slab2_rate = 3.00
+        slab3_rate = 4.00
+        slab4_rate = 5.00
+        slab5_rate = 5.00
+        slab6_rate = 5.00
     elif billing_type=="Commercial":
         slab1_rate = 7.75
         slab2_rate = 8.75
