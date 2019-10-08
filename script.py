@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, flash, send_from_directory
 import os
-from whitenoise import WhiteNoise
 
 app = Flask(__name__)
-app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
+
 
 
 @app.route('/', methods=['GET', 'POST'])
