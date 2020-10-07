@@ -1,1 +1,1 @@
-# App avilable here : https://solarkillthebill.herokuapp.com/
+App available here : https://solarkillthebill.herokuapp.com/
